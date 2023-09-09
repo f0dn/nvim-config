@@ -1,0 +1,12 @@
+vim.g.mapleader = ' '
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('n', '<leader>f', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('i', '<C-j>', '<Down>')
+vim.keymap.set('i', '<C-k>', '<Up>')
+vim.keymap.set('n', '<C-j>', '<C-d>zz')
+vim.keymap.set('n', '<C-k>', '<C-u>zz')
+vim.keymap.set('v', '<C-c>', '"*y')
