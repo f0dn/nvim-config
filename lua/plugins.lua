@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
     use 'github/copilot.vim'
     use 'tpope/vim-fugitive'
     use 'rktjmp/lush.nvim'
+    use "rktjmp/shipwright.nvim"
     use '~/AppData/Local/nvim/lua/scripts/scheme'
     use 'ThePrimeagen/vim-be-good'
 end)

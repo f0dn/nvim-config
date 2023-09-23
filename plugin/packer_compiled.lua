@@ -159,6 +159,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\there\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\scheme",
     url = "C:\\Users\\there\\AppData\\Local\\nvim\\lua\\scripts\\scheme"
   },
+  ["shipwright.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\there\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\shipwright.nvim",
+    url = "https://github.com/rktjmp/shipwright.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\there\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
