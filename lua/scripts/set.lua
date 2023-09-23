@@ -20,7 +20,7 @@ local options = {
 
     swapfile = false,
     backup = false,
-    undodir = "C:\\Users\\there\\.nvim\\undodir",
+    undodir = "/home/there/.nvim/undodir",
     undofile = true,
 
     cursorline = true,

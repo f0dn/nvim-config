@@ -34,6 +34,6 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'rktjmp/lush.nvim'
     use "rktjmp/shipwright.nvim"
-    use '~/AppData/Local/nvim/lua/scripts/scheme'
+    use '/home/there/.config/nvim/lua/scripts/scheme'
     use 'ThePrimeagen/vim-be-good'
 end)
