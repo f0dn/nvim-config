@@ -2,7 +2,7 @@ require('mason').setup()
 local cmp = require('cmp')
 local lspconfig = require('lspconfig')
 local mason_lspconfig = require('mason-lspconfig')
-local get_servers = mason_lspconfig.get_installed_servers
+local servers = mason_lspconfig.get_installed_servers()
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 cmp.setup {
@@ -42,8 +42,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
-
-for _, server_name in ipairs(get_servers()) do
+for _, server_name in ipairs(servers) do
     lspconfig[server_name].setup({
         capabilities = lsp_capabilities,
     })

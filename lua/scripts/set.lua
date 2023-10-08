@@ -1,4 +1,6 @@
 vim.g.copilot_assume_mapped = true
+vim.g.netrw_banner = 0;
+
 local options = {
     hlsearch = false,
 
@@ -27,6 +29,8 @@ local options = {
 
     colorcolumn = '90',
     termguicolors = true,
+
+    ignorecase = true,
 }
 
 for key, value in pairs(options) do

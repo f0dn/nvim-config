@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
         { 'hrsh7th/cmp-nvim-lsp' },
     }
     use 'saadparwaiz1/cmp_luasnip'
+    use 'mfussenegger/nvim-jdtls'
     use 'L3MON4D3/LuaSnip'
     use 'neovim/nvim-lspconfig'
     use 'williamboman/mason.nvim'

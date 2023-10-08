@@ -1,7 +1,7 @@
 local trouble = require('trouble')
 
 trouble.setup({
-    mode = 'document_diagnostics',
+    mode = 'workspace_diagnostics',
     auto_preview = false,
 })
 
