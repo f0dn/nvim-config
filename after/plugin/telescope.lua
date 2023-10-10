@@ -6,6 +6,7 @@ require('telescope').setup {
             '--hidden',
             '--glob',
             '!**/.git/*',
+            '!**/*.class/*',
         },
         mappings = {
             i = {
