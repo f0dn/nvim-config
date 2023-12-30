@@ -126,7 +126,7 @@ local theme = lush(function(injected_functions)
         sym"@conditional"           { keyword_color },
         sym"@repeat"                { keyword_color },
         sym"@type.qualifier"        { keyword_color },
-        sym"@exception.java"        { keyword_color },
+        sym"@exception"             { keyword_color },
         sym"@type.builtin"          { keyword_color, gui = 'italic' },
 
         -- Pre Processors
