@@ -63,3 +63,7 @@ lspconfig.lua_ls.setup {
         }
     }
 }
+
+lspconfig.graphql.setup {
+    filetypes = { 'graphql', 'javascript', 'typescript', 'typescriptreact' },
+}

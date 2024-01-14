@@ -62,7 +62,7 @@ local config = {
                     },
                     {
                         name = "JavaSE-17",
-                        path = "/snap/android-studio/128/android-studio/jbr/",
+                        path = "/snap/android-studio/144/jbr/",
                     },
                     {
                         name = "JavaSE-19",
