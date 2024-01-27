@@ -37,4 +37,5 @@ return require('packer').startup(function(use)
     use "rktjmp/shipwright.nvim"
     use '/home/there/.config/nvim/lua/scripts/scheme'
     use 'ThePrimeagen/vim-be-good'
+    use 'thosakwe/vim-flutter'
 end)

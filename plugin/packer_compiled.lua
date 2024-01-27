@@ -189,6 +189,11 @@ _G.packer_plugins = {
     path = "/home/there/.local/share/nvim/site/pack/packer/start/vim-be-good",
     url = "https://github.com/ThePrimeagen/vim-be-good"
   },
+  ["vim-flutter"] = {
+    loaded = true,
+    path = "/home/there/.local/share/nvim/site/pack/packer/start/vim-flutter",
+    url = "https://github.com/thosakwe/vim-flutter"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/there/.local/share/nvim/site/pack/packer/start/vim-fugitive",

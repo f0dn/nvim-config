@@ -61,8 +61,9 @@ local config = {
                         path = "/usr/lib/jvm/java-11-openjdk-amd64/",
                     },
                     {
+                        default = true,
                         name = "JavaSE-17",
-                        path = "/snap/android-studio/144/jbr/",
+                        path = "/snap/android-studio/current/jbr/",
                     },
                     {
                         name = "JavaSE-19",

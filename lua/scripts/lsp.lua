@@ -48,6 +48,11 @@ for _, server_name in ipairs(servers) do
     })
 end
 
+lspconfig.dartls.setup {
+    cmd = { 'dart', 'language-server', '--protocol=lsp' },
+    capabilities = lsp_capabilities,
+}
+
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {
