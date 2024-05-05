@@ -108,6 +108,8 @@ local theme = lush(function(injected_functions)
         sym"@constant.builtin"      { constant_color },
         sym"@lsp.type.property"     { },
         paramater_color             { fg = hsl(272, 74, 46), gui = 'italic' },
+        sym"@parameter"             { paramater_color },
+        sym"@variable.parameter"    { paramater_color },
         sym"@lsp.type.parameter"    { paramater_color },
 
         -- Functions

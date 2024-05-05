@@ -78,6 +78,11 @@ local config = {
                     }
                 }
             },
+            project = {
+                referencedLibraries = {
+                    '/home/there/Downloads/processing-4.3/core/library/core.jar',
+                }
+            }
         }
     }
 }
