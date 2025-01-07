@@ -43,6 +43,7 @@ local theme = lush(function(injected_functions)
         CursorLine                  { bg = base_color_5.fg },
         LineNr                      { fg = base_color_3.fg },
         CursorLineNr                { fg = base_color.fg },
+        netrwClassify               { fg = base_color.fg },
         StatusLine                  { bg = base_color_5.fg, fg = base_color_2.fg },
         StatusLineNC                { bg = base_color_4.fg, fg = base_color_1.fg },
         Pmenu                       { fg = base_color_2.fg, bg = base_color_5.fg },
@@ -73,10 +74,11 @@ local theme = lush(function(injected_functions)
         Type                        { fg = green_color.fg },
         Directory                   { fg = green_color.fg.abs_da(20) },
         MoreMsg                     { fg = green_color.fg.abs_da(30) },
+        Function                    { fg = green_color.fg.abs_da(30) },
         DiffAdd                     { bg = green_color.fg.abs_da(30) },
 
         -- Sea
-        ModeMsg                     { fg = sea_color.fg },
+        ModeMsg                     { fg = sea_color.fg.abs_da(20) },
         NonText                     { fg = sea_color.fg.abs_da(30) },
 
         -- Text
@@ -93,6 +95,7 @@ local theme = lush(function(injected_functions)
         sym"@character"             { string_color },
         number_color                { fg = hsl(295, 50, 55) },
         sym"@number"                { number_color },
+        sym"@number.float"          { number_color },
         sym"@float"                 { number_color },
         boolean_color               { fg = hsl(310, 64, 41) },
         sym"@boolean"               { boolean_color },
@@ -101,6 +104,8 @@ local theme = lush(function(injected_functions)
         variable_color              { fg = hsl(204, 69, 48) },
         Identifier                  { variable_color },
         sym"@variable"              { variable_color },
+        sym"@variable.builtin"      { variable_color },
+        sym"@attribute.builtin"     { variable_color },
         sym"@field"                 { variable_color },
         constant_color              { boolean_color },
         Constant                    { constant_color },
@@ -118,6 +123,7 @@ local theme = lush(function(injected_functions)
         sym"@function.builtin"      { function_color },
         sym"@method"                { function_color },
         sym"@method.call"           { function_color },
+        sym"@constructor"           { function_color },
         sym"@lsp.type.method"       { function_color },
         sym"@lsp.type.function"     { function_color },
         sym"@lsp.mod.constructor"   { function_color },
@@ -134,6 +140,7 @@ local theme = lush(function(injected_functions)
         -- Pre Processors
         pre_proc_color              { fg = hsl(210, 60, 33) },
         sym"@include"               { pre_proc_color },
+        sym"@lsp.type.macro"        { PreProc },
 
         -- Types and Classes
         type_color                  { fg = hsl(329, 42, 51) },
@@ -157,6 +164,7 @@ local theme = lush(function(injected_functions)
         sym"@punctuation.bracket"   { bracket_color },
         operator_color              { pre_proc_color },
         sym"@operator"              { operator_color },
+        sym"@character.special"     { operator_color },
 
         -- Errors
         error_color                 { fg = red_color.fg.abs_da(10).abs_sa(50) },
