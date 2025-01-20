@@ -43,8 +43,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.cmd('silent !dx fmt --file %')
             elseif filetype == 'python' then
                 vim.cmd('silent !black --preview -q %')
+            elseif filetype == 'gdscript' then
+                vim.cmd('silent !gdformat %')
+            else
+                vim.lsp.buf.format { async = true }
             end
-            vim.lsp.buf.format { async = true }
         end, opts)
     end
 })
