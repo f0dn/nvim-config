@@ -5,3 +5,9 @@ vim.filetype.add({
         rz = "razor",
     },
 })
+
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+    callback = function()
+        vim.lsp.stop_client(vim.lsp.get_clients({ name = 'Godot' }))
+    end
+})
