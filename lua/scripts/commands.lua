@@ -8,6 +8,6 @@ vim.filetype.add({
 
 vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
     callback = function()
-        vim.lsp.stop_client(vim.lsp.get_clients({ name = 'Godot' }))
+        vim.api.nvim_command('silent echo serverstop("/tmp/godot.pipe")')
     end
 })
