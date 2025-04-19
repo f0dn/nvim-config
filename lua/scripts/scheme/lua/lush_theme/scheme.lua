@@ -151,6 +151,7 @@ local theme = lush(function(injected_functions)
         sym"@lsp.type.interface"    { type_color },
         sym"@storageclass.lifetime" { type_color },
         namespace_color             { fg = hsl(45, 100, 87), gui = 'italic' },
+        sym"@module"                { namespace_color },
         sym"@namespace"             { namespace_color },
         sym"@lsp.type.namespace"    { namespace_color },
 
