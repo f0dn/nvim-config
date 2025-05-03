@@ -49,5 +49,5 @@ require("lazy").setup({
         'ThePrimeagen/vim-be-good',
         'thosakwe/vim-flutter',
     },
-    checker = { enabled = true },
+    checker = { enabled = false },
 })

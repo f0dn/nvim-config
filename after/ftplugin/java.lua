@@ -4,7 +4,7 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw', 'gradle.build' }, { upward = true })[1]),
+    root_dir = vim.fs.dirname(vim.fs.find({ 'settings.gradle', 'gradlew', '.git', 'mvnw', 'gradle.build' }, { upward = true })[1]),
 
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
@@ -61,13 +61,17 @@ local config = {
                         path = "/usr/lib/jvm/java-11-openjdk-amd64/",
                     },
                     {
-                        default = true,
                         name = "JavaSE-17",
-                        path = "/snap/android-studio/current/jbr/",
+                        path = "/usr/lib/jvm/java-17-openjdk-amd64/",
                     },
                     {
                         name = "JavaSE-19",
                         path = "/usr/lib/jvm/java-19-openjdk-amd64/",
+                    },
+                    {
+                        default = true,
+                        --name = "JavaSE-21",
+                        path = "/snap/android-studio/current/jbr/",
                     },
                 },
             },
@@ -86,6 +90,9 @@ local config = {
         }
     }
 }
+
+print(config.root_dir)
+
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 jdtls.start_or_attach(config)

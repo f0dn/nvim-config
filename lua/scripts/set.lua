@@ -1,5 +1,4 @@
 vim.g.copilot_assume_mapped = true
-vim.g.copilot_node_command = "/home/there/.nvm/versions/node/v23.11.0/bin/node"
 vim.g.netrw_banner = 0;
 
 local options = {
