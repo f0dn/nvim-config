@@ -4,7 +4,7 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    root_dir = vim.fs.dirname(vim.fs.find({ 'settings.gradle', 'gradlew', '.git', 'mvnw', 'gradle.build' }, { upward = true })[1]),
+    root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw', 'gradle.build' }, { upward = true })[1]),
 
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
@@ -23,7 +23,7 @@ local config = {
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
-        '-jar', '/home/there/.nvim/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-jar', '/home/there/.nvim/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar',
         '-configuration', '/home/there/.nvim/jdtls/config_linux',
 
         '-data', '/home/there/.nvim/jdtls/projects/' .. project_name,
@@ -70,8 +70,8 @@ local config = {
                     },
                     {
                         default = true,
-                        --name = "JavaSE-21",
-                        path = "/snap/android-studio/current/jbr/",
+                        name = "JavaSE-21",
+                        path = "/usr/lib/jvm/java-21-openjdk-amd64/",
                     },
                 },
             },
@@ -90,8 +90,6 @@ local config = {
         }
     }
 }
-
-print(config.root_dir)
 
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.

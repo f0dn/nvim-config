@@ -41,6 +41,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             if filetype == 'rust' then
                 vim.cmd('silent w')
                 vim.cmd('silent !dx fmt --file %')
+                vim.lsp.buf.format { async = true }
             elseif filetype == 'python' then
                 vim.cmd('silent w')
                 vim.cmd('silent !black --preview -q %')
@@ -120,3 +121,18 @@ lspconfig.rust_analyzer.setup {
         }
     }
 }
+
+--[[
+lspconfig.harper_ls.setup {
+    filetypes = {},
+    capabilities = lsp_capabilities,
+    settings = {
+        ["harper-ls"] = {
+            linters = {
+                SentenceCapitalization = false,
+                SpellCheck = false,
+            }
+        }
+    }
+}
+]]

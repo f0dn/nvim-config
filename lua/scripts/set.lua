@@ -31,6 +31,8 @@ local options = {
     termguicolors = true,
 
     ignorecase = true,
+
+    winborder = "rounded",
 }
 
 for key, value in pairs(options) do

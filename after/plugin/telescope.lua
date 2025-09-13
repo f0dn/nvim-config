@@ -1,13 +1,7 @@
 require('telescope').setup {
     defaults = {
         hidden = true,
-        file_ignore_patterns = { '**/*.class', '**/*.bin', '**/*.dex', '**/*.flat', '**/*.lock', '**/*.jar' },
-        vimgrep_arguments = {
-            'rg',
-            '--hidden',
-            '--glob',
-            '!**/.git/*',
-        },
+        file_ignore_patterns = { '**/*.class', '**/*.bin', '**/*.dex', '**/*.flat', '**/*.lock', '**/*.jar', '.git/' },
         mappings = {
             i = {
                 ["<C-j>"] = "move_selection_next",
