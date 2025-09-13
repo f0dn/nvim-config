@@ -41,11 +41,9 @@ require("lazy").setup({
         'mbbill/undotree',
         'github/copilot.vim',
         'tpope/vim-fugitive',
-        'rktjmp/lush.nvim',
-        'rktjmp/shipwright.nvim',
-        { dir = '/home/there/.config/nvim/lua/scripts/scheme' },
         'ThePrimeagen/vim-be-good',
         'thosakwe/vim-flutter',
+        { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     },
     checker = { enabled = false },
 })
