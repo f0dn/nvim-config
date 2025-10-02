@@ -10,8 +10,8 @@ local options = {
     softtabstop = 4,
     shiftwidth = 4,
     expandtab = true,
-
     smartindent = true,
+
     rnu = true,
     nu = true,
     scl = 'number',
@@ -22,7 +22,7 @@ local options = {
 
     swapfile = false,
     backup = false,
-    undodir = "/home/there/.nvim/undodir",
+    undodir = os.getenv("HOME") .. "/.nvim/undodir",
     undofile = true,
 
     cursorline = true,
@@ -36,5 +36,5 @@ local options = {
 }
 
 for key, value in pairs(options) do
-   vim.opt[key] = value
+    vim.opt[key] = value
 end

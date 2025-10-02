@@ -23,4 +23,3 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set('n', '<leader>d', function() trouble.open('diagnostics') end)
-vim.keymap.set('n', '<leader>i', function() vim.diagnostic.open_float() end)

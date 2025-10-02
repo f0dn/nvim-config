@@ -1,6 +1,5 @@
 require('mason').setup()
 local cmp = require('cmp')
-local lspconfig = require('lspconfig')
 local mason_lspconfig = require('mason-lspconfig')
 local servers = mason_lspconfig.get_installed_servers()
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -34,7 +33,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local opts = { buffer = event.buf }
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<C-f>', function()
             local filetype = vim.bo.filetype
@@ -56,17 +55,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 for _, server_name in ipairs(servers) do
-    lspconfig[server_name].setup({
+    vim.lsp.enable(server_name)
+    vim.lsp.config(server_name, {
         capabilities = lsp_capabilities,
     })
 end
 
-lspconfig.dartls.setup {
+vim.lsp.config('dartls', {
     cmd = { 'dart', 'language-server', '--protocol=lsp' },
     capabilities = lsp_capabilities,
-}
+})
 
-lspconfig.lua_ls.setup {
+vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
             runtime = {
@@ -80,13 +80,13 @@ lspconfig.lua_ls.setup {
             }
         }
     }
-}
+})
 
-lspconfig.graphql.setup {
+vim.lsp.config('graphql', {
     filetypes = { 'graphql', 'javascript', 'typescript', 'typescriptreact' },
-}
+})
 
-lspconfig.rust_analyzer.setup {
+vim.lsp.config('rust_analyzer', {
     capabilities = lsp_capabilities,
     settings = {
         ['rust-analyzer'] = {
@@ -120,10 +120,10 @@ lspconfig.rust_analyzer.setup {
             end
         }
     }
-}
+})
 
 --[[
-lspconfig.harper_ls.setup {
+vim.lsp.config('harper_ls', {
     filetypes = {},
     capabilities = lsp_capabilities,
     settings = {
@@ -134,5 +134,5 @@ lspconfig.harper_ls.setup {
             }
         }
     }
-}
+})
 ]]

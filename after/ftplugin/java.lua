@@ -23,10 +23,10 @@ local config = {
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
-        '-jar', '/home/there/.nvim/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar',
-        '-configuration', '/home/there/.nvim/jdtls/config_linux',
+        '-jar', os.getenv("HOME") .. '/.nvim/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar',
+        '-configuration', os.getenv("HOME") .. '/.nvim/jdtls/config_linux',
 
-        '-data', '/home/there/.nvim/jdtls/projects/' .. project_name,
+        '-data', os.getenv("HOME") .. '/.nvim/jdtls/projects/' .. project_name,
     },
 
     init_options = {
@@ -38,9 +38,9 @@ local config = {
         local opts = { silent = true, buffer = bufnr }
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<C-f>', function()
+        vim.keymap.set('n', '<C-S-i>', function()
             vim.lsp.buf.format { async = true }
         end, opts)
     end,
@@ -84,7 +84,7 @@ local config = {
             },
             project = {
                 referencedLibraries = {
-                    '/home/there/processing-4.3/core/library/core.jar',
+                    os.getenv("HOME") .. '/processing-4.3/core/library/core.jar',
                 }
             }
         }

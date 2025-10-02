@@ -20,7 +20,7 @@ require("lazy").setup({
             'nvim-telescope/telescope.nvim',
             requires = { { 'nvim-lua/plenary.nvim' } }
         },
-        { 'nvim-treesitter/nvim-treesitter',                  run = ':TSUpdate' },
+        { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
         'nvim-treesitter/playground',
         'nvim-treesitter/nvim-treesitter-context',
         {
@@ -37,13 +37,10 @@ require("lazy").setup({
         'L3MON4D3/LuaSnip',
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
-        'theprimeagen/harpoon',
         'mbbill/undotree',
         'github/copilot.vim',
         'tpope/vim-fugitive',
-        'ThePrimeagen/vim-be-good',
-        'thosakwe/vim-flutter',
-        { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+        { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
     },
     checker = { enabled = false },
 })
