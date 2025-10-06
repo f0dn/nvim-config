@@ -41,6 +41,7 @@ require("lazy").setup({
         'github/copilot.vim',
         'tpope/vim-fugitive',
         { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
+        { 'chomosuke/typst-preview.nvim', ft = 'typst' },
     },
     checker = { enabled = false },
 })
