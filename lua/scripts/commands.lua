@@ -19,3 +19,32 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         ]])
     end
 })
+
+local copilot_augroup = vim.api.nvim_create_augroup("CopilotToggle", { clear = true })
+
+local function stop_copilot()
+    for _, client in pairs(vim.lsp.get_clients()) do
+        if client.name == "GitHub Copilot" then
+            client.stop()
+        end
+    end
+end
+
+stop_copilot()
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+    pattern = "*",
+    group = copilot_augroup,
+    callback = function()
+        vim.cmd("Copilot restart")
+    end,
+})
+
+-- Maybe checkout updatetime and CursorHold
+vim.api.nvim_create_autocmd("InsertLeave", {
+    pattern = "*",
+    group = copilot_augroup,
+    callback = function()
+        stop_copilot()
+    end,
+})
