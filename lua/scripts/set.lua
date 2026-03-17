@@ -33,6 +33,8 @@ local options = {
     ignorecase = true,
 
     winborder = "rounded",
+
+    splitright = true, -- for copilot chat
 }
 
 for key, value in pairs(options) do

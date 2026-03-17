@@ -41,7 +41,17 @@ require("lazy").setup({
         'github/copilot.vim',
         'tpope/vim-fugitive',
         { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
-        { 'chomosuke/typst-preview.nvim', ft = 'typst' },
+        { 'chomosuke/typst-preview.nvim',    ft = 'typst' },
+        {
+            "CopilotC-Nvim/CopilotChat.nvim",
+            dependencies = {
+                { "nvim-lua/plenary.nvim", branch = "master" },
+            },
+            build = "make tiktoken",
+            opts = {
+                -- See Configuration section for options
+            },
+        },
     },
     checker = { enabled = false },
 })
