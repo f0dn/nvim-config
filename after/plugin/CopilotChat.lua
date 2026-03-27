@@ -140,4 +140,4 @@ cmp.register_source('CopilotChat', source.new())
 
 cmp.setup.filetype({ 'copilot-chat' }, { sources = cmp.config.sources({ { name = 'CopilotChat' } }) })
 
-vim.keymap.set('n', '<leader>cc', chat.toggle)
+vim.keymap.set({ 'n', 'v' }, '<leader>cc', chat.toggle)
