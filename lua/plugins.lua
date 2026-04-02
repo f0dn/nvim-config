@@ -18,14 +18,14 @@ require("lazy").setup({
     spec = {
         {
             'nvim-telescope/telescope.nvim',
-            requires = { { 'nvim-lua/plenary.nvim' } }
+            dependencies = { { 'nvim-lua/plenary.nvim' } }
         },
         { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
         'nvim-treesitter/playground',
         'nvim-treesitter/nvim-treesitter-context',
         {
             'folke/trouble.nvim',
-            requires = { { 'nvim-tree/nvim-web-devicons' } },
+            dependencies = { { 'nvim-tree/nvim-web-devicons' } },
         },
         'williamboman/mason-lspconfig.nvim',
         {
@@ -52,6 +52,10 @@ require("lazy").setup({
                 -- See Configuration section for options
             },
         },
+        {
+            'weirongxu/plantuml-previewer.vim',
+            dependencies = { { 'tyru/open-browser.vim' }, { 'aklt/plantuml-syntax' } },
+        }
     },
     checker = { enabled = false },
 })
