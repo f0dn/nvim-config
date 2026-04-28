@@ -1,61 +1,55 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-    if vim.v.shell_error ~= 0 then
-        vim.api.nvim_echo({
-            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out,                            "WarningMsg" },
-            { "\nPress any key to exit..." },
-        }, true, {})
-        vim.fn.getchar()
-        os.exit(1)
-    end
-end
-vim.opt.rtp:prepend(lazypath)
+local gh = function(x) return 'https://github.com/' .. x end
 
-require("lazy").setup({
-    spec = {
-        {
-            'nvim-telescope/telescope.nvim',
-            dependencies = { { 'nvim-lua/plenary.nvim' } }
-        },
-        { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-        'nvim-treesitter/playground',
-        'nvim-treesitter/nvim-treesitter-context',
-        {
-            'folke/trouble.nvim',
-            dependencies = { { 'nvim-tree/nvim-web-devicons' } },
-        },
-        'williamboman/mason-lspconfig.nvim',
-        {
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-        },
-        'saadparwaiz1/cmp_luasnip',
-        'mfussenegger/nvim-jdtls',
-        'L3MON4D3/LuaSnip',
-        'neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',
-        'mbbill/undotree',
-        'github/copilot.vim',
-        'tpope/vim-fugitive',
-        { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
-        { 'chomosuke/typst-preview.nvim',    ft = 'typst' },
-        {
-            "CopilotC-Nvim/CopilotChat.nvim",
-            dependencies = {
-                { "nvim-lua/plenary.nvim", branch = "master" },
-            },
-            build = "make tiktoken",
-            opts = {
-                -- See Configuration section for options
-            },
-        },
-        {
-            'weirongxu/plantuml-previewer.vim',
-            dependencies = { { 'tyru/open-browser.vim' }, { 'aklt/plantuml-syntax' } },
-        }
-    },
-    checker = { enabled = false },
+vim.api.nvim_create_autocmd('PackChanged', {
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if kind == 'update' then
+            if name == 'nvim-treesitter' then
+                if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+                vim.cmd('TSUpdate')
+            end
+            if name == 'CopilotChat' then
+                if not ev.data.active then vim.cmd.packadd('CopilotChat') end
+                vim.cmd('make tiktoken')
+            end
+        end
+    end
 })
+
+vim.pack.add({
+    gh('nvim-lua/plenary.nvim'),           -- for telescope and copilot chat
+    gh('nvim-tree/nvim-web-devicons'),     -- for telescope
+    gh('tyru/open-browser.vim'),           -- for plantuml previewer
+    gh('aklt/plantuml-syntax'),            -- for plantuml previewer
+    gh('catppuccin/nvim'),
+
+    -- tree sitter
+    gh('nvim-treesitter/nvim-treesitter'),
+    gh('nvim-treesitter/nvim-treesitter-context'),
+
+    -- lsp
+    gh('neovim/nvim-lspconfig'),
+    gh('williamboman/mason.nvim'),
+    gh('williamboman/mason-lspconfig.nvim'),
+    gh('hrsh7th/nvim-cmp'),
+    gh('hrsh7th/cmp-nvim-lsp'),
+    gh('saadparwaiz1/cmp_luasnip'),
+    gh('L3MON4D3/LuaSnip'),
+    gh('mfussenegger/nvim-jdtls'),
+
+    -- ai
+    gh('github/copilot.vim'),
+    gh('CopilotC-Nvim/CopilotChat.nvim'),
+
+    -- misc
+    gh('tpope/vim-fugitive'),
+    gh('nvim-telescope/telescope.nvim'),
+    gh('folke/trouble.nvim'),
+    gh('mbbill/undotree'),
+    gh('chomosuke/typst-preview.nvim'),
+    gh('weirongxu/plantuml-previewer.vim'),
+})
+
+--vim.schedule(function()
+--    vim.pack.update(nil, { force = true })
+--end)
