@@ -1,26 +1,10 @@
 local gh = function(x) return 'https://github.com/' .. x end
 
-vim.api.nvim_create_autocmd('PackChanged', {
-    callback = function(ev)
-        local name, kind = ev.data.spec.name, ev.data.kind
-        if kind == 'update' then
-            if name == 'nvim-treesitter' then
-                if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
-                vim.cmd('TSUpdate')
-            end
-            if name == 'CopilotChat' then
-                if not ev.data.active then vim.cmd.packadd('CopilotChat') end
-                vim.cmd('make tiktoken')
-            end
-        end
-    end
-})
-
 vim.pack.add({
-    gh('nvim-lua/plenary.nvim'),           -- for telescope and copilot chat
-    gh('nvim-tree/nvim-web-devicons'),     -- for telescope
-    gh('tyru/open-browser.vim'),           -- for plantuml previewer
-    gh('aklt/plantuml-syntax'),            -- for plantuml previewer
+    gh('nvim-lua/plenary.nvim'),       -- for telescope and copilot chat
+    gh('nvim-tree/nvim-web-devicons'), -- for telescope
+    gh('tyru/open-browser.vim'),       -- for plantuml previewer
+    gh('aklt/plantuml-syntax'),        -- for plantuml previewer
     gh('catppuccin/nvim'),
 
     -- tree sitter
@@ -50,6 +34,24 @@ vim.pack.add({
     gh('weirongxu/plantuml-previewer.vim'),
 })
 
---vim.schedule(function()
---    vim.pack.update(nil, { force = true })
---end)
+local update_callbacks = {
+    ['nvim-treesitter'] = function()
+        vim.cmd('TSUpdate')
+    end,
+    ['CopilotChat'] = function()
+        vim.cmd('make tiktoken')
+    end,
+}
+
+vim.api.nvim_create_autocmd('PackChanged', {
+    callback = function(ev)
+        if ev.data.kind == 'update' then
+            for name, callback in pairs(update_callbacks) do
+                if name == ev.data.spec.name then
+                    if not ev.data.active then vim.cmd.packadd(name) end
+                    callback()
+                end
+            end
+        end
+    end
+})

@@ -53,25 +53,25 @@ local config = {
                 -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
                 runtimes = {
                     {
-                        name = "JavaSE-1.8",
-                        path = "/usr/lib/jvm/java-8-openjdk-amd64/",
+                        name = 'JavaSE-1.8',
+                        path = '/usr/lib/jvm/java-8-openjdk-amd64/',
                     },
                     {
-                        name = "JavaSE-11",
-                        path = "/usr/lib/jvm/java-11-openjdk-amd64/",
+                        name = 'JavaSE-11',
+                        path = '/usr/lib/jvm/java-11-openjdk-amd64/',
                     },
                     {
-                        name = "JavaSE-17",
-                        path = "/usr/lib/jvm/java-17-openjdk-amd64/",
+                        name = 'JavaSE-17',
+                        path = '/usr/lib/jvm/java-17-openjdk-amd64/',
                     },
                     {
-                        name = "JavaSE-19",
-                        path = "/usr/lib/jvm/java-19-openjdk-amd64/",
+                        name = 'JavaSE-19',
+                        path = '/usr/lib/jvm/java-19-openjdk-amd64/',
                     },
                     {
                         default = true,
-                        name = "JavaSE-21",
-                        path = "/usr/lib/jvm/java-21-openjdk-amd64/",
+                        name = 'JavaSE-21',
+                        path = '/usr/lib/jvm/java-21-openjdk-amd64/',
                     },
                 },
             },
@@ -84,7 +84,7 @@ local config = {
             },
             project = {
                 referencedLibraries = {
-                    os.getenv("HOME") .. '/processing-4.3/core/library/core.jar',
+                    os.getenv('HOME') .. '/processing-4.3/core/library/core.jar',
                 }
             }
         }

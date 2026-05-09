@@ -137,3 +137,13 @@ vim.lsp.config('harper_ls', {
     }
 })
 ]]
+
+local short_indent_langs = { 'css', 'dart', 'haskell', 'html' }
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = short_indent_langs,
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})

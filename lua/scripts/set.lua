@@ -3,8 +3,11 @@ vim.g.netrw_banner = 0;
 
 local options = {
     hlsearch = false,
+    ignorecase = true,
 
     background = 'dark',
+    termguicolors = true,
+    winborder = 'rounded',
 
     tabstop = 4,
     softtabstop = 4,
@@ -16,23 +19,15 @@ local options = {
     nu = true,
     scl = 'number',
 
-    wrap = false,
-
-    scrolloff = 15,
-
     swapfile = false,
     backup = false,
-    undodir = os.getenv("HOME") .. "/.nvim/undodir",
     undofile = true,
+    undodir = os.getenv('HOME') .. '/.nvim/undodir',
 
     cursorline = true,
-
-    colorcolumn = '90',
-    termguicolors = true,
-
-    ignorecase = true,
-
-    winborder = "rounded",
+    colorcolumn = '80',
+    scrolloff = 15,
+    wrap = false,
 
     splitright = true, -- for copilot chat
 }

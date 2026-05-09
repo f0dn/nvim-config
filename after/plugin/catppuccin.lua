@@ -1,5 +1,5 @@
-require("catppuccin").setup({
-    flavor = "mocha",
+require('catppuccin').setup({
+    flavor = 'mocha',
 })
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme('catppuccin')
