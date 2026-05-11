@@ -22,8 +22,9 @@ telescope.setup({
 telescope.load_extension('ui-select')
 
 vim.keymap.set('n', '<leader>pf', function() telescope_builtin.find_files({ hidden = true }) end,
-    { noremap = true, silent = true })
+    { noremap = true, silent = true, desc = 'Telescope Find files' })
 vim.keymap.set('n', '<leader>ps',
     function() telescope_builtin.live_grep({ additional_args = function() return { '--hidden' } end }) end,
-    { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>pd', telescope_builtin.diagnostics, { noremap = true, silent = true })
+    { noremap = true, silent = true, desc = 'Telescope Live grep' })
+vim.keymap.set('n', '<leader>pd', telescope_builtin.diagnostics,
+    { noremap = true, silent = true, desc = 'Telescope LSP Diagnostics' })

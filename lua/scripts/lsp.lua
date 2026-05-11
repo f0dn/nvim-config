@@ -85,15 +85,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP keybinds',
     group = lsp_group,
     callback = function(event)
-        local opts = { buffer = event.buf }
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'grr', telescope_builtin.lsp_references, opts)
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        local function opts(desc) return { desc = desc, buffer = event.buf } end
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts('LSP Hover'))
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts('LSP Go to Definition'))
+        vim.keymap.set('n', 'grr', telescope_builtin.lsp_references, opts('LSP References'))
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts('LSP Code Actions'))
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts('LSP Rename'))
         vim.keymap.set('n', '<C-f>', function()
             conform.format({ async = true, lsp_format = 'first' })
-        end, opts)
+        end, opts('Format Current Buffer'))
     end
 })
 
