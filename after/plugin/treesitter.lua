@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd('FileType', {
         local is_available = vim.tbl_contains(available_langs, lang)
         if is_available then
             treesitter.install(lang):await(function()
-                vim.treesitter.start()
+                pcall(vim.treesitter.start) -- sometimes crashes because of filetypes :(
                 treesitter.indentexpr()
             end)
         end

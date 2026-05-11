@@ -1,8 +1,7 @@
 local function stop_copilot()
     for _, client in pairs(vim.lsp.get_clients()) do
         if client.name == 'GitHub Copilot' then
-            ---@diagnostic disable-next-line: missing-parameter
-            client.stop()
+            client:stop()
         end
     end
 end

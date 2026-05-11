@@ -1,18 +1,12 @@
 require('mason').setup()
 local cmp = require('cmp')
-local mason_lspconfig = require('mason-lspconfig')
-local servers = mason_lspconfig.get_installed_servers()
+local servers = require('mason-lspconfig').get_installed_servers()
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local telescope_builtin = require('telescope.builtin')
 
-cmp.setup {
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
+cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
         { name = 'CopilotChat' },
     },
     mapping = cmp.mapping.preset.insert({
@@ -26,22 +20,23 @@ cmp.setup {
             end
         end)
     })
-}
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(event)
         local opts = { buffer = event.buf }
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'grr', telescope_builtin.lsp_references, opts)
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<C-f>', function()
             local filetype = vim.bo.filetype
             if filetype == 'rust' then
                 vim.cmd('silent w')
                 vim.cmd('silent !dx fmt --file %')
-                vim.lsp.buf.format { async = true }
+                vim.lsp.buf.format({ async = true })
             elseif filetype == 'python' then
                 vim.cmd('silent w')
                 vim.cmd('silent !black --preview -q %')
@@ -49,7 +44,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.cmd('silent w')
                 vim.cmd('silent !gdformat %')
             else
-                vim.lsp.buf.format { async = true }
+                vim.lsp.buf.format({ async = true })
             end
         end, opts)
     end
@@ -64,7 +59,6 @@ end
 
 vim.lsp.config('dartls', {
     cmd = { 'dart', 'language-server', '--protocol=lsp' },
-    capabilities = lsp_capabilities,
 })
 
 vim.lsp.config('lua_ls', {
@@ -88,37 +82,11 @@ vim.lsp.config('graphql', {
 })
 
 vim.lsp.config('rust_analyzer', {
-    capabilities = lsp_capabilities,
     settings = {
         ['rust-analyzer'] = {
             check = {
                 command = 'clippy'
             }
-        }
-    },
-    commands = {
-        ExpandMacro = {
-            function()
-                vim.lsp.buf_request_all(
-                    0,
-                    'rust-analyzer/expandMacro',
-                    vim.lsp.util.make_position_params(),
-                    function(responses)
-                        local result = { '```rust' }
-                        local lines = responses[2].result.expansion:gmatch('[^\n]+')
-                        local i = 1
-                        for line in (lines) do
-                            if i ~= 1 then
-                                table.insert(result, line:sub(4))
-                            end
-                            i = i + 1
-                        end
-                        table.remove(result, #result)
-                        table.insert(result, '```')
-                        vim.lsp.util.open_floating_preview(result, 'markdown')
-                    end
-                )
-            end
         }
     }
 })
@@ -146,4 +114,15 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.opt_local.softtabstop = 2
         vim.opt_local.shiftwidth = 2
     end
+})
+
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = ' ',
+            [vim.diagnostic.severity.WARN] = ' ',
+            [vim.diagnostic.severity.INFO] = ' ',
+            [vim.diagnostic.severity.HINT] = ' ',
+        }
+    }
 })

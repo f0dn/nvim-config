@@ -17,8 +17,6 @@ vim.pack.add({
     gh('williamboman/mason-lspconfig.nvim'),
     gh('hrsh7th/nvim-cmp'),
     gh('hrsh7th/cmp-nvim-lsp'),
-    gh('saadparwaiz1/cmp_luasnip'),
-    gh('L3MON4D3/LuaSnip'),
     gh('mfussenegger/nvim-jdtls'),
 
     -- ai
@@ -28,7 +26,7 @@ vim.pack.add({
     -- misc
     gh('tpope/vim-fugitive'),
     gh('nvim-telescope/telescope.nvim'),
-    gh('folke/trouble.nvim'),
+    gh('nvim-telescope/telescope-ui-select.nvim'),
     gh('mbbill/undotree'),
     gh('chomosuke/typst-preview.nvim'),
     gh('weirongxu/plantuml-previewer.vim'),
@@ -36,7 +34,7 @@ vim.pack.add({
 
 local update_callbacks = {
     ['nvim-treesitter'] = function()
-        vim.cmd('TSUpdate')
+        vim.cmd.TSUpdate()
     end,
     ['CopilotChat'] = function()
         vim.cmd('make tiktoken')
