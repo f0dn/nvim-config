@@ -14,7 +14,10 @@ vim.lsp.start({
     end
 })
 
+local group = vim.api.nvim_create_augroup('GDScript', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+    desc = 'Stop the GDScript server when leaving the buffer',
+    group = group,
     callback = function()
         vim.cmd('silent echo serverstop("' .. pipe .. '")')
     end

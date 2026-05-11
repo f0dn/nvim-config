@@ -80,8 +80,10 @@ conform.setup({
     }
 })
 
+local lsp_group = vim.api.nvim_create_augroup('LSP', { clear = true })
 vim.api.nvim_create_autocmd('LspAttach', {
-    desc = 'LSP actions',
+    desc = 'LSP keybinds',
+    group = lsp_group,
     callback = function(event)
         local opts = { buffer = event.buf }
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -106,7 +108,10 @@ for server_name, config in pairs(custom_configs) do
     vim.lsp.config(server_name, config)
 end
 
+local short_indent_group = vim.api.nvim_create_augroup('ShortIndent', { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
+    desc = 'Set short indent for certain languages',
+    group = short_indent_group,
     pattern = short_indent_langs,
     callback = function()
         vim.opt_local.tabstop = 2

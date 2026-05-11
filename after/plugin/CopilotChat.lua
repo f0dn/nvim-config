@@ -1,3 +1,5 @@
+-- TODO not sure what to do with this file - hopefully i can move away from nvim-cmp at some point
+
 local chat = require('CopilotChat')
 local completion = require('CopilotChat.completion')
 local functions = require('CopilotChat.functions')

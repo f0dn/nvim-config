@@ -44,7 +44,10 @@ local update_callbacks = {
     end,
 }
 
+local pack_group = vim.api.nvim_create_augroup('PackChanged', { clear = true })
 vim.api.nvim_create_autocmd('PackChanged', {
+    desc = 'Run plugin callbacks on plugin updates',
+    group = pack_group,
     callback = function(ev)
         if ev.data.kind == 'update' then
             for name, callback in pairs(update_callbacks) do
