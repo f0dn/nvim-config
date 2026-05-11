@@ -3,6 +3,56 @@ local cmp = require('cmp')
 local servers = require('mason-lspconfig').get_installed_servers()
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local telescope_builtin = require('telescope.builtin')
+local conform = require('conform')
+
+local short_indent_langs = { 'css', 'dart', 'haskell', 'html' }
+local custom_configs = {
+    dartls = {
+        cmd = { 'dart', 'language-server', '--protocol=lsp' },
+    },
+    lua_ls = {
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT'
+                },
+                workspace = {
+                    library = { vim.env.VIMRUNTIME }
+                },
+                globals = {
+                    'vim',
+                }
+            }
+        }
+    },
+    graphql = {
+        filetypes = { 'graphql', 'javascript', 'typescript', 'typescriptreact' },
+    },
+    rust_analyzer = {
+        settings = {
+            ['rust-analyzer'] = {
+                check = {
+                    command = 'clippy'
+                }
+            }
+        }
+    }
+}
+
+--[[
+vim.lsp.config('harper_ls', {
+    filetypes = {},
+    capabilities = lsp_capabilities,
+    settings = {
+        ["harper-ls"] = {
+            linters = {
+                SentenceCapitalization = false,
+                SpellCheck = false,
+            }
+        }
+    }
+})
+]]
 
 cmp.setup({
     sources = {
@@ -22,6 +72,14 @@ cmp.setup({
     })
 })
 
+conform.setup({
+    formatters_by_ft = {
+        rust = { 'dioxus' },
+        python = { 'ruff' },
+        gdscript = { 'gdformat' },
+    }
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(event)
@@ -32,20 +90,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<C-f>', function()
-            local filetype = vim.bo.filetype
-            if filetype == 'rust' then
-                vim.cmd('silent w')
-                vim.cmd('silent !dx fmt --file %')
-                vim.lsp.buf.format({ async = true })
-            elseif filetype == 'python' then
-                vim.cmd('silent w')
-                vim.cmd('silent !black --preview -q %')
-            elseif filetype == 'gdscript' then
-                vim.cmd('silent w')
-                vim.cmd('silent !gdformat %')
-            else
-                vim.lsp.buf.format({ async = true })
-            end
+            conform.format({ async = true, lsp_format = 'first' })
         end, opts)
     end
 })
@@ -57,56 +102,10 @@ for _, server_name in ipairs(servers) do
     })
 end
 
-vim.lsp.config('dartls', {
-    cmd = { 'dart', 'language-server', '--protocol=lsp' },
-})
+for server_name, config in pairs(custom_configs) do
+    vim.lsp.config(server_name, config)
+end
 
-vim.lsp.config('lua_ls', {
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT'
-            },
-            workspace = {
-                library = { vim.env.VIMRUNTIME }
-            },
-            globals = {
-                'vim',
-            }
-        }
-    }
-})
-
-vim.lsp.config('graphql', {
-    filetypes = { 'graphql', 'javascript', 'typescript', 'typescriptreact' },
-})
-
-vim.lsp.config('rust_analyzer', {
-    settings = {
-        ['rust-analyzer'] = {
-            check = {
-                command = 'clippy'
-            }
-        }
-    }
-})
-
---[[
-vim.lsp.config('harper_ls', {
-    filetypes = {},
-    capabilities = lsp_capabilities,
-    settings = {
-        ["harper-ls"] = {
-            linters = {
-                SentenceCapitalization = false,
-                SpellCheck = false,
-            }
-        }
-    }
-})
-]]
-
-local short_indent_langs = { 'css', 'dart', 'haskell', 'html' }
 vim.api.nvim_create_autocmd('FileType', {
     pattern = short_indent_langs,
     callback = function()

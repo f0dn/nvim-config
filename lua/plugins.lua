@@ -17,7 +17,12 @@ vim.pack.add({
     gh('williamboman/mason-lspconfig.nvim'),
     gh('hrsh7th/nvim-cmp'),
     gh('hrsh7th/cmp-nvim-lsp'),
+    gh('stevearc/conform.nvim'),
     gh('mfussenegger/nvim-jdtls'),
+
+    -- telescope
+    gh('nvim-telescope/telescope.nvim'),
+    gh('nvim-telescope/telescope-ui-select.nvim'),
 
     -- ai
     gh('github/copilot.vim'),
@@ -25,8 +30,6 @@ vim.pack.add({
 
     -- misc
     gh('tpope/vim-fugitive'),
-    gh('nvim-telescope/telescope.nvim'),
-    gh('nvim-telescope/telescope-ui-select.nvim'),
     gh('mbbill/undotree'),
     gh('chomosuke/typst-preview.nvim'),
     gh('weirongxu/plantuml-previewer.vim'),
