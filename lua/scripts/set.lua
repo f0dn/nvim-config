@@ -28,8 +28,6 @@ local options = {
     colorcolumn = '80',
     scrolloff = 15,
     wrap = false,
-
-    splitright = true, -- for copilot chat
 }
 
 for key, value in pairs(options) do

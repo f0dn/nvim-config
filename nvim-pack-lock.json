@@ -8,6 +8,10 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "agentic.nvim": {
+      "rev": "88a8b003c2c58ad1acb64869d55211955b68330f",
+      "src": "https://github.com/carlos-algms/agentic.nvim"
+    },
     "cmp-nvim-lsp": {
       "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"

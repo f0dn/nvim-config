@@ -1,7 +1,7 @@
 local gh = function(x) return 'https://github.com/' .. x end
 
 vim.pack.add({
-    gh('nvim-lua/plenary.nvim'),       -- for telescope and copilot chat
+    gh('nvim-lua/plenary.nvim'),       -- for telescope
     gh('nvim-tree/nvim-web-devicons'), -- for telescope
     gh('tyru/open-browser.vim'),       -- for plantuml previewer
     gh('aklt/plantuml-syntax'),        -- for plantuml previewer
@@ -26,7 +26,7 @@ vim.pack.add({
 
     -- ai
     gh('github/copilot.vim'),
-    gh('CopilotC-Nvim/CopilotChat.nvim'),
+    gh('carlos-algms/agentic.nvim'),
 
     -- misc
     gh('tpope/vim-fugitive'),
@@ -38,9 +38,6 @@ vim.pack.add({
 local update_callbacks = {
     ['nvim-treesitter'] = function()
         vim.cmd.TSUpdate()
-    end,
-    ['CopilotChat'] = function()
-        vim.cmd('make tiktoken')
     end,
 }
 

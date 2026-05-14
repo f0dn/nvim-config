@@ -57,7 +57,6 @@ vim.lsp.config('harper_ls', {
 cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'CopilotChat' },
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-k>'] = cmp.mapping.select_prev_item(),
