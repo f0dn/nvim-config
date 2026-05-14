@@ -88,8 +88,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts('LSP Hover'))
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts('LSP Go to Definition'))
         vim.keymap.set('n', 'grr', telescope_builtin.lsp_references, opts('LSP References'))
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts('LSP Code Actions'))
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts('LSP Rename'))
         vim.keymap.set('n', '<C-f>', function()
             conform.format({ async = true, lsp_format = 'first' })
         end, opts('Format Current Buffer'))
