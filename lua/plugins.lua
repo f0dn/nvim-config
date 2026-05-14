@@ -15,8 +15,7 @@ vim.pack.add({
     gh('neovim/nvim-lspconfig'),
     gh('williamboman/mason.nvim'),
     gh('williamboman/mason-lspconfig.nvim'),
-    gh('hrsh7th/nvim-cmp'),
-    gh('hrsh7th/cmp-nvim-lsp'),
+    { src = gh('saghen/blink.cmp'), version = vim.version.range('1.*') },
     gh('stevearc/conform.nvim'),
     gh('mfussenegger/nvim-jdtls'),
 

@@ -1,7 +1,9 @@
 require('mason').setup()
-local cmp = require('cmp')
+local blink = require('blink.cmp')
 local servers = require('mason-lspconfig').get_installed_servers()
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lsp_capabilities = blink.get_lsp_capabilities({
+    textDocument = { completion = { completionItem = { snippetSupport = false } } },
+})
 local telescope_builtin = require('telescope.builtin')
 local conform = require('conform')
 
@@ -54,21 +56,29 @@ vim.lsp.config('harper_ls', {
 })
 ]]
 
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
+blink.setup({
+    keymap = {
+        preset = 'none',
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<Tab>'] = { 'accept', 'fallback' },
     },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
-            else
-                fallback()
-            end
-        end)
-    })
+    sources = {
+        default = {
+            'lsp',
+        }
+    },
+    completion = {
+        accept = {
+            auto_brackets = {
+                enabled = false,
+            },
+        },
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 0,
+        }
+    }
 })
 
 conform.setup({
