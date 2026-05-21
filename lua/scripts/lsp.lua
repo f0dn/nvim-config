@@ -80,6 +80,7 @@ blink.setup({
 })
 
 conform.setup({
+    lsp_format = 'last',
     formatters_by_ft = {
         rust = { 'dioxus' },
         python = { 'ruff' },
@@ -97,7 +98,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts('LSP Go to Definition'))
         vim.keymap.set('n', 'grr', telescope_builtin.lsp_references, opts('LSP References'))
         vim.keymap.set('n', '<C-f>', function()
-            conform.format({ async = true, lsp_format = 'first' })
+            conform.format({ async = true })
         end, opts('Format Current Buffer'))
     end
 })
