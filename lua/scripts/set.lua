@@ -24,7 +24,6 @@ local options = {
     undofile = true,
     undodir = os.getenv('HOME') .. '/.nvim/undodir',
 
-    cursorline = true,
     colorcolumn = '80',
     scrolloff = 15,
     wrap = false,

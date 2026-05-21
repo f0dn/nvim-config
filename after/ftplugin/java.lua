@@ -1,3 +1,5 @@
+-- TODO THIS NEEDS TO BE FIXED
+
 local jdtls = require('jdtls')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
