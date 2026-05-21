@@ -37,17 +37,6 @@ local custom_configs = {
             }
         }
     },
-    harper_ls = {
-        settings = {
-            ["harper-ls"] = {
-                linters = {
-                    SentenceCapitalization = false,
-                    SpellCheck = false,
-                    SplitWords = false,
-                }
-            }
-        }
-    }
 }
 
 blink.setup({
