@@ -1,9 +1,7 @@
 require('mason').setup()
 local blink = require('blink.cmp')
 local servers = require('mason-lspconfig').get_installed_servers()
-local lsp_capabilities = blink.get_lsp_capabilities({
-    textDocument = { completion = { completionItem = { snippetSupport = false } } },
-})
+local lsp_capabilities = blink.get_lsp_capabilities()
 local telescope_builtin = require('telescope.builtin')
 local conform = require('conform')
 
@@ -57,7 +55,8 @@ blink.setup({
         preset = 'none',
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<C-j>'] = { 'select_next', 'fallback' },
-        ['<Tab>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'accept', 'snippet_forward', 'fallback' },
+        ['<C-e>'] = { 'hide', 'fallback' },
     },
     sources = {
         default = {
