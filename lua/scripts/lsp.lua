@@ -37,6 +37,12 @@ local custom_configs = {
             }
         }
     },
+    jdtls = {
+        root_markers = {
+            { 'mvnw',      'gradlew', 'settings.gradle', 'settings.gradle.kts', '.git' },
+            { 'build.xml', 'pom.xml', 'build.gradle',    'build.gradle.kts' }
+        }
+    }
 }
 
 blink.setup({
@@ -69,7 +75,6 @@ blink.setup({
 })
 
 conform.setup({
-    lsp_format = 'last',
     formatters_by_ft = {
         rust = { 'dioxus' },
         python = { 'ruff' },
@@ -87,7 +92,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts('LSP Go to Definition'))
         vim.keymap.set('n', 'grr', telescope_builtin.lsp_references, opts('LSP References'))
         vim.keymap.set('n', '<C-f>', function()
-            conform.format({ async = true })
+            conform.format({ async = true }, function() vim.lsp.buf.format({ async = true }) end)
         end, opts('Format Current Buffer'))
     end
 })
