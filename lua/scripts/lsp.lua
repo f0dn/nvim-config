@@ -39,8 +39,20 @@ local custom_configs = {
     },
     jdtls = {
         root_markers = {
-            { 'mvnw',      'gradlew', 'settings.gradle', 'settings.gradle.kts', '.git' },
-            { 'build.xml', 'pom.xml', 'build.gradle',    'build.gradle.kts' }
+            { 'mvnw',      'gradlew', 'settings.gradle', 'settings.gradle.kts' },
+            { 'build.xml', 'pom.xml', 'build.gradle',    'build.gradle.kts' },
+            '.git',
+        },
+        settings = {
+            java = {
+                jdt = {
+                    ls = {
+                        androidSupport = {
+                            enabled = true,
+                        }
+                    }
+                },
+            }
         }
     }
 }

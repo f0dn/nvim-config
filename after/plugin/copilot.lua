@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd('InsertEnter', {
     group = copilot_augroup,
     callback = function()
         vim.cmd('Copilot restart')
-        print('Starting Copilot...')
     end,
 })
 
@@ -26,6 +25,5 @@ vim.api.nvim_create_autocmd('CursorHold', {
     group = copilot_augroup,
     callback = function()
         stop_copilot()
-        print('Stopping Copilot due to inactivity.')
     end,
 })
