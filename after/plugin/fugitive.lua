@@ -1,16 +1,36 @@
-local old_git = vim.cmd.Git
+local dotfiles_git_dir = vim.fn.expand("~/.dotfiles")
 
-local function git()
+local function smart_git()
     if vim.fn.FugitiveGitDir() == '' then
-        local git_dir = vim.fn.expand('~/.dotfiles')
-        local work_tree = vim.fn.expand('~')
-
-        vim.fn.FugitiveDetect(git_dir, work_tree)
+        vim.fn.FugitiveDetect(dotfiles_git_dir)
     end
 
-    old_git()
+    vim.cmd.Git()
 end
 
-vim.cmd.Git = git
+vim.api.nvim_create_user_command('Dot', function(opts)
+    vim.fn.FugitiveDetect(dotfiles_git_dir)
 
-vim.keymap.set('n', '<leader>g', vim.cmd.Git, { desc = 'Open Git status' })
+    local cmd = vim.fn["fugitive#Command"](
+        opts.line1,
+        opts.count,
+        opts.range > 0 and 1 or 0,
+        opts.bang and 1 or 0,
+        "",
+        opts.args
+    )
+
+    local ok, err = pcall(vim.cmd, cmd)
+
+    if not ok then
+        error(err)
+    end
+end, {
+    bang = true,
+    nargs = "?",
+    range = true,
+    complete = function(...)
+        return vim.fn["fugitive#Complete"](...)
+    end,
+})
+vim.keymap.set('n', '<leader>g', smart_git, { desc = 'Open Git status' })
