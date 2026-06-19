@@ -22,7 +22,7 @@ local options = {
     swapfile = false,
     backup = false,
     undofile = true,
-    undodir = os.getenv('HOME') .. '/.nvim/undodir',
+    undodir = os.getenv('HOME') .. '/.local/state/nvim/undodir',
 
     colorcolumn = '80',
     scrolloff = 15,
