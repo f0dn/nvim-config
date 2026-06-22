@@ -1,5 +1,5 @@
 vim.g.copilot_assume_mapped = true
-vim.g.netrw_banner = 0;
+vim.g.netrw_banner = 0
 
 local options = {
     hlsearch = false,
