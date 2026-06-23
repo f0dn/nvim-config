@@ -17,7 +17,6 @@ vim.pack.add({
     gh('williamboman/mason-lspconfig.nvim'),
     { src = gh('saghen/blink.cmp'), version = vim.version.range('1.*') },
     gh('stevearc/conform.nvim'),
-    gh('mfussenegger/nvim-jdtls'),
 
     -- telescope
     gh('nvim-telescope/telescope.nvim'),
