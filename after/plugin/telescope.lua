@@ -4,7 +4,7 @@ local telescope_builtin = require('telescope.builtin')
 
 telescope.setup({
     defaults = {
-        file_ignore_patterns = { '%.class', '%.bin', '%.dex', '%.flat', '%.lock', '%.jar', '.git/', '__pycache__/' },
+        file_ignore_patterns = { '%.class', '%.bin', '%.dex', '%.flat', '%.lock', '%.jar', '.git/', '__pycache__/', '.venv' },
         mappings = {
             i = {
                 ['<C-j>'] = 'move_selection_next',
@@ -26,5 +26,5 @@ vim.keymap.set('n', '<leader>pf', function() telescope_builtin.find_files({ hidd
 vim.keymap.set('n', '<leader>ps',
     function() telescope_builtin.live_grep({ additional_args = function() return { '--hidden' } end }) end,
     { noremap = true, silent = true, desc = 'Telescope Live grep' })
-vim.keymap.set('n', '<leader>pd', telescope_builtin.diagnostics,
+vim.keymap.set('n', '<leader>pd', function() telescope_builtin.diagnostics({ root_dir = true }) end,
     { noremap = true, silent = true, desc = 'Telescope LSP Diagnostics' })
