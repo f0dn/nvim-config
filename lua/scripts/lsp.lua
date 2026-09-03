@@ -90,7 +90,7 @@ conform.setup({
     formatters_by_ft = {
         rust = { 'dioxus' },
         python = { 'ruff' },
-        gdscript = { 'gdformat' },
+        gdscript = { 'gdscript-formatter' },
     }
 })
 
@@ -104,7 +104,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts('LSP Go to Definition'))
         vim.keymap.set('n', 'grr', telescope_builtin.lsp_references, opts('LSP References'))
         vim.keymap.set('n', '<C-f>', function()
-            conform.format({ async = true }, function() vim.lsp.buf.format({ async = true }) end)
+            conform.format({ async = true, lsp_format = 'last' })
         end, opts('Format Current Buffer'))
     end
 })
