@@ -3,7 +3,6 @@ vim.g.maplocalleader = ' '
 local agentic = require('agentic')
 
 agentic.setup({
-    provider = 'copilot-acp',
     file_picker = {
         enabled = false,
     }

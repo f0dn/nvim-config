@@ -91,6 +91,13 @@ conform.setup({
         rust = { 'dioxus' },
         python = { 'ruff' },
         gdscript = { 'gdscript-formatter' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        json = { 'prettier' },
+        html = { 'prettier' },
+        css = { 'prettier' },
     }
 })
 
