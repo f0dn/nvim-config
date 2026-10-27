@@ -1,5 +1,13 @@
 {
   "plugins": {
+    "CopilotChat.nvim": {
+      "rev": "137d3bc527518f5ea982c43c43084496732365c3",
+      "src": "https://github.com/CopilotC-Nvim/CopilotChat.nvim"
+    },
+    "LuaSnip": {
+      "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
     "agentic.nvim": {
       "rev": "a19fee663aa8be5f46f0af6fc0b46427b0e75cf2",
       "src": "https://github.com/carlos-algms/agentic.nvim"
@@ -8,6 +16,18 @@
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
+    },
+    "cmp-nvim-lsp": {
+      "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
+    },
+    "cmp-omni": {
+      "rev": "4ef610bbd85a5ee4e97e09450c0daecbdc60de86",
+      "src": "https://github.com/hrsh7th/cmp-omni"
+    },
+    "cmp_luasnip": {
+      "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
+      "src": "https://github.com/saadparwaiz1/cmp_luasnip"
     },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
@@ -28,6 +48,14 @@
     "nvim": {
       "rev": "e068ab5f8261f23f6f71ffd8791ae40315b77b9c",
       "src": "https://github.com/catppuccin/nvim"
+    },
+    "nvim-cmp": {
+      "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
+      "src": "https://github.com/hrsh7th/nvim-cmp"
+    },
+    "nvim-jdtls": {
+      "rev": "77ccaeb422f8c81b647605da5ddb4a7f725cda90",
+      "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
       "rev": "bfcc0171a43f22afa61d927ffe9fcb6cb85dc99e",
@@ -57,6 +85,10 @@
       "rev": "9d4900aa16674bf5bb8296a72b975317d573b547",
       "src": "https://github.com/aklt/plantuml-syntax"
     },
+    "playground": {
+      "rev": "ba48c6a62a280eefb7c85725b0915e021a1a0749",
+      "src": "https://github.com/nvim-treesitter/playground"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
@@ -68,6 +100,10 @@
     "telescope.nvim": {
       "rev": "427b576c16792edad01a92b89721d923c19ad60f",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "trouble.nvim": {
+      "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
+      "src": "https://github.com/folke/trouble.nvim"
     },
     "typst-preview.nvim": {
       "rev": "87db18b8d19c8b0eed399f52e4c527ce5afe4817",
